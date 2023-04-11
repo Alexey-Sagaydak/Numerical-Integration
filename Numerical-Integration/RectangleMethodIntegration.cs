@@ -29,7 +29,8 @@ public class RectangleMethodIntegration
         if (a >= b)
             throw new ArgumentException("a must be less than b");
 
-        float result = 0, r = 1.1f, h = 4;
+        float r = 1.1f, h = 4;
+        int p = 1;
         GetSolution getSolution;
 
         switch (rectangleType)
@@ -42,6 +43,7 @@ public class RectangleMethodIntegration
                 break;
             case RectangleType.Middle:
                 getSolution = SolveMiddle;
+                p = 2;
                 break;
             default:
                 throw new ArgumentException(nameof(RectangleType));
@@ -54,7 +56,7 @@ public class RectangleMethodIntegration
             Step = h;
             h /= r;
             Solution2 = getSolution(a, b, h);
-        } while (!RungeRule.Check(Solution1, Solution2, 2, epsilon, r));
+        } while (!RungeRule.Check(Solution1, Solution2, p, epsilon, r));
 
         return Solution1;
     }
@@ -73,7 +75,7 @@ public class RectangleMethodIntegration
     {
         float result = 0;
 
-        for (a += step; a < b; a += step)
+        for (a += step; a <= b; a += step)
             result += mathFunction.Calculate(a);
 
         return result * step;

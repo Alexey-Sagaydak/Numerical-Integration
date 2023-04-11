@@ -18,6 +18,8 @@ public static class Program
         MathFunction mathFunction = new MathFunction(Function);
 
         RectangleMethodIntegration rectangleMethodIntegration = new RectangleMethodIntegration(mathFunction);
+        TrapezoidalIntegration trapezoidalIntegration = new TrapezoidalIntegration(mathFunction);
+        SimpsonRuleIntegration simpsonRuleIntegration = new SimpsonRuleIntegration(mathFunction);
 
         Console.WriteLine($"{rectangleMethodIntegration.Solve(a, b, e1, RectangleType.Left)} {rectangleMethodIntegration.Step}");
         Console.WriteLine($"{rectangleMethodIntegration.Solve(a, b, e2, RectangleType.Left)} {rectangleMethodIntegration.Step}");
@@ -28,5 +30,10 @@ public static class Program
         Console.WriteLine($"{rectangleMethodIntegration.Solve(a, b, e1, RectangleType.Middle)} {rectangleMethodIntegration.Step}");
         Console.WriteLine($"{rectangleMethodIntegration.Solve(a, b, e2, RectangleType.Middle)} {rectangleMethodIntegration.Step}");
 
+        Console.WriteLine($"{trapezoidalIntegration.Solve(a, b, e1)} {trapezoidalIntegration.Step}");
+        Console.WriteLine($"{trapezoidalIntegration.Solve(a, b, e2)} {trapezoidalIntegration.Step}");
+
+        Console.WriteLine($"{simpsonRuleIntegration.Solve(a, b, e1)} {simpsonRuleIntegration.Step}");
+        Console.WriteLine($"{simpsonRuleIntegration.Solve(a, b, e2)} {simpsonRuleIntegration.Step}");
     }
 }
