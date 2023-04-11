@@ -1,4 +1,4 @@
-﻿namespace Numerical_Integration;
+﻿namespace NumericalIntegration;
 
 public class TrapezoidalIntegration
 {
