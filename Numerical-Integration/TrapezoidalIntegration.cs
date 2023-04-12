@@ -23,7 +23,7 @@ public class TrapezoidalIntegration
         if (a >= b)
             throw new ArgumentException("a must be less than b");
 
-        float r = 1.1f, h = 4;
+        float r = 1.5f, h = (b - a) / 2.0f;
         int p = 2;
 
         Solution2 = GetSolution(a, b, h);
@@ -42,7 +42,7 @@ public class TrapezoidalIntegration
     {
         float result = 0;
 
-        for (float i = a + step; i < b - step; i += step)
+        for (float i = a + step; i <= b - step; i += step)
             result += mathFunction.Calculate(i);
 
         return step * (result + (mathFunction.Calculate(a) + mathFunction.Calculate(b)) / 2.0f);

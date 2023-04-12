@@ -23,7 +23,7 @@ public class SimpsonRuleIntegration
         if (a >= b)
             throw new ArgumentException("a must be less than b");
 
-        float r = 1.1f, h = 4;
+        float r = 2f, h = (b - a) / 2.0f;
         int p = 4;
 
         Solution2 = GetSolution(a, b, h);
@@ -40,11 +40,15 @@ public class SimpsonRuleIntegration
 
     private float GetSolution(float a, float b, float step)
     {
-        float result = 0;
+        int n = (int)((b - a) / step);
+        float result = mathFunction.Calculate(a) + mathFunction.Calculate(b);
 
-        for (float i = a + step; i < b - step; i += 2 * step)
-            result += 4 * mathFunction.Calculate(i) + 2 * mathFunction.Calculate(i + step);
+        for (int i = 1; i <= n - 1; i++)
+        {
+            a += step;
+            result += (i % 2 == 0) ? 2 * mathFunction.Calculate(a) : 4 * mathFunction.Calculate(a);
+        }
 
-        return step / 3.0f * (result + mathFunction.Calculate(a) + mathFunction.Calculate(b));
+        return (step / 3) * result;
     }
 }

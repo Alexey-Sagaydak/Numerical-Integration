@@ -29,7 +29,7 @@ public class RectangleMethodIntegration
         if (a >= b)
             throw new ArgumentException("a must be less than b");
 
-        float r = 1.1f, h = 4;
+        float r = 2f, h = b - a;
         int p = 1;
         GetSolution getSolution;
 
@@ -65,7 +65,7 @@ public class RectangleMethodIntegration
     {
         float result = 0;
 
-        for (; a < b - step; a += step)
+        for (; a <= b - step; a += step)
             result += mathFunction.Calculate(a);
 
         return result * step;
@@ -85,7 +85,7 @@ public class RectangleMethodIntegration
     {
         float result = 0;
 
-        for (; a < b - step; a += step)
+        for (; a <= b - step; a += step)
             result += mathFunction.Calculate((2 * a + step) / 2.0f);
 
         return result * step;
