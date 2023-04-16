@@ -53,12 +53,12 @@ public class RectangleMethodIntegration
         do
         {
             Solution1 = Solution2;
-            Step = h;
             h /= r;
+            Step = h;
             Solution2 = getSolution(a, b, h);
         } while (!RungeRule.Check(Solution1, Solution2, p, epsilon, r));
 
-        return Solution1;
+        return Solution2;
     }
 
     private float SolveLeft(float a, float b, float step)
